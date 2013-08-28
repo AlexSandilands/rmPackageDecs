@@ -18,7 +18,8 @@ for (dirpath, dirnames, filenames) in walk(path):
 
 
 for f in files:
-    if(f[-4:] == ".txt"):
+    # Change this line depending on what type of file you want to purge
+    if(f[-5:] == ".java"):
         lines = open(f, 'r').readlines()
 
         # Check if the first line has a package declaration
