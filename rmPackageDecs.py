@@ -28,8 +28,8 @@ for f in files:
 
         for x in range(0, len(lines)):
             if(lines[x][:7] == "package"):
-                # Delete the line that has the package declaration
-                del lines[x]
+                # Comment the line that has the package declaration
+                lines[x] = "//" + lines[x]
                 break
 
             # If you find the word "public", there must have been no package
