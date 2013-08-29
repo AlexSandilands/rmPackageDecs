@@ -1,6 +1,6 @@
 # Pass the directory you want edited as a command line argument.
-# This script will find all java files in the directory and
-# all subdirectories and remove the package declaration (if there is one).
+# This script will find all java files in that directory and
+# all subdirectories and will remove the package declaration (if there is one).
 
 import sys
 from os import walk
@@ -22,17 +22,21 @@ for (dirpath, dirnames, filenames) in walk(path):
 
 
 for f in files:
-    # Change this line depending on what type of file you want to purge
+    # Check if f is a java file
     if(f[-5:] == ".java"):
         lines = open(f, 'r').readlines()
 
-        # Check if the first line has a package declaration
-        # Edit this is the package declarations are somewhere other
-        # than the first line, perhaps do a for loop over the first 10 lines,
-        # or if it comes to it just loop until you find one.
-        if(lines[0][:7] == "package"):
-            # Delete the line that has the package declaration
-            del lines[0]
+        for x in range(0, len(lines)):
+            if(lines[x][:7] == "package"):
+                # Delete the line that has the package declaration
+                del lines[x]
+                break
+
+            # If you find the word "public", there must have been no package
+            # declaration, so break
+            if(lines[x][:6] == "public"):
+                break
+
 
         fw = open(f, 'w')
 
