@@ -5,6 +5,10 @@
 import sys
 from os import walk
 
+if len(sys.argv) < 2:
+    print("Pass in the directory you want to purge as a command line argument.")
+    sys.exit(0)
+
 # Store the path to the directory
 path = sys.argv[1]
 
