@@ -19,7 +19,7 @@ for (dirpath, dirnames, filenames) in walk(path):
     # Add the directory path to the front of the filenames
     pathsToFiles = [dirpath + "/" + f for f in filenames]
     files.extend(pathsToFiles)
-
+    # If you don't want to check subdirectories, break here
 
 for f in files:
     # Check if f is a java file
